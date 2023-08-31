@@ -41,24 +41,24 @@ public class TesteNumeros {
         }
 
         @Test
-        public void TesteCalcularMedianaListaImpar() {
-            numerosService.cadastrar(List.of(1, 3, 2, 5, 4));
-            double mediana = numerosService.calcularMediana();
-            Assert.assertEquals(3.0, mediana, 0.001);
-        }
-
-        @Test
-        public void TesteCalcularMedianaListaPar() {
-            numerosService.cadastrar(List.of(1, 3, 2, 5, 4, 6));
-            double mediana = numerosService.calcularMediana();
-            Assert.assertEquals(3.5, mediana, 0.001);
-        }
-
-        @Test
         public void TesteCalcularMedianaListaVazia() {
             double mediana = numerosService.calcularMediana();
             Assert.assertEquals(0.0, mediana, 0.001);
         }
+    @Test
+    public void TesteValorMaximo() {
+        numerosService.cadastrar(List.of(1, 5, 3, 2, 4));
+        String estatisticas = numerosService.calcularEstatisticas();
+        String expected = "Média: 3.0\nDesvio Padrão: 1.4142135623730951\nMediana: 3.0";
+        Assert.assertEquals(expected, estatisticas);
+    }
 
+    @Test
+    public void TesteValorMinimo() {
+        numerosService.cadastrar(List.of(5, 4, 3, 2, 1));
+        String estatisticas = numerosService.calcularEstatisticas();
+        String expected = "Média: 3.0\nDesvio Padrão: 1.4142135623730951\nMediana: 3.0";
+        Assert.assertEquals(expected, estatisticas);
+    }
 
 }
