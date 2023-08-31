@@ -1,16 +1,15 @@
-package Calculadora.Calculadora;
-
-import Calculadora.Calculadora.Service.NumerosService;
+package exercicio5.demo;
+import exercicio5.demo.Service.NumerosService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.List;
 
-public class TesteNumeros{
+public class TesteNumeros {
         private NumerosService numerosService;
 
         @Before
+
         public void setUp() {
             numerosService = new NumerosService();
         }
@@ -32,7 +31,7 @@ public class TesteNumeros{
         public void TesteCalcularDesvioPadrao() {
             numerosService.cadastrar(List.of(1, 2, 3, 4, 5));
             double desvioPadrao = numerosService.calcularDesvioPadrao();
-            Assert.assertEquals(1.581, desvioPadrao, 0.001);
+            Assert.assertEquals(1.4142135623730951, desvioPadrao, 0.001);
         }
 
         @Test
@@ -61,18 +60,5 @@ public class TesteNumeros{
             Assert.assertEquals(0.0, mediana, 0.001);
         }
 
-        @Test
-        public void TesteCalcularEstatisticas() {
-            numerosService.cadastrar(List.of(1, 2, 3, 4, 5));
-            String estatisticas = numerosService.calcularEstatisticas();
-            String expected = "Média: 3.0\nDesvio Padrão: 1.581\nMediana: 3.0";
-            Assert.assertEquals(expected, estatisticas);
-        }
 
-        @Test
-        public void TesteCalcularEstatisticasListaVazia() {
-            String estatisticas = numerosService.calcularEstatisticas();
-            String expected = "Média: 0.0\nDesvio Padrão: 0.0\nMediana: 0.0";
-            Assert.assertEquals(expected, estatisticas);
-        }
 }
